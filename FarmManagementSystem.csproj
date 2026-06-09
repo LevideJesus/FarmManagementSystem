@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Models\Farm.cs" />
     <Compile Include="Models\Field.cs" />
+    <Compile Include="Models\Tractor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

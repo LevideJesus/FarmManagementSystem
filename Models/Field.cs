@@ -11,11 +11,11 @@ namespace FarmManagementSystem.Models
         public string Name
         {
             get { return _name; }
-            set
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    return;
+                    throw new ArgumentException("The Field name must not be empty");
                 }
 
                 _name = value;
@@ -29,7 +29,7 @@ namespace FarmManagementSystem.Models
             get { return _sizeInAcres; }
             private set
             {
-                if(value <= 0) { throw new ArgumentException(); }
+                if(value <= 0) { throw new ArgumentException("Size in acres must be greater than zero"); }
                 _sizeInAcres = value;
                 
             }

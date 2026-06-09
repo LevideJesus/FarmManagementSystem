@@ -5,9 +5,12 @@ namespace FarmManagementSystem.Models
 {
     internal class Farm
     {
-        private List<Field> _fields = new List<Field>();
+        private readonly List<Field> _fields = new List<Field>();
 
-        public IReadOnlyList<Field> fields => _fields;
+        private readonly List<Tractor> _tractors = new List<Tractor>();
+
+        public IReadOnlyList<Tractor> Tractors => _tractors;
+        public IReadOnlyList<Field> Fields => _fields;
 
         private string _name;
 
@@ -31,6 +34,35 @@ namespace FarmManagementSystem.Models
            
         }
 
+        public void AddTractor(Tractor tractor)
+        {
+            if(tractor == null)
+            {
+                throw new ArgumentNullException(nameof(tractor), "Tractor cannot be null");
+            }
+            _tractors.Add(tractor);
+        }
+
+        public void ShowTractors()
+        {
+            foreach (Tractor tractor in _tractors)
+            {
+                Console.WriteLine($"{tractor.Model} - {tractor.HorsePower} HP");
+            }
+        }
+
+        public int GetTotalHorsePower()
+        {
+            int totalHorsePower = 0;
+
+            foreach(Tractor tractor in _tractors)
+            {
+                totalHorsePower += tractor.HorsePower;
+            }
+            
+            return totalHorsePower;
+        }
+
         public void AddField(Field field)
         {
             if(field == null)
@@ -46,10 +78,6 @@ namespace FarmManagementSystem.Models
             
             foreach(Field field in _fields)
             {
-                if (string.IsNullOrWhiteSpace(field.Name))
-                {
-                    continue;
-                }
 
                 Console.WriteLine($"{field.Name} - {field.SizeInAcres} acres");
             }
@@ -63,8 +91,7 @@ namespace FarmManagementSystem.Models
                
                 sumAcres += field.SizeInAcres;
             }
-      
-            Console.WriteLine($"Total Acreage: {sumAcres}");
+            
             return sumAcres;
         }
 

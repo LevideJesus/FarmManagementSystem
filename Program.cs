@@ -10,16 +10,13 @@ namespace FarmManagementSystem
 
             Farm farm = new Farm("Green Valley");
 
-            Field field1 = new Field("North Field", 100);
-            Field field2 = new Field("South Field", 50);
+            farm.AddTractor(
+                new Tractor("John Deere 8R", 0));
 
+           
 
-            farm.AddField(field1);
-            farm.AddField(field2);
-
-
-            farm.ShowFields();
-            Console.WriteLine($"Total Acreage: {farm.GetTotalAcreage()}");
+            farm.ShowTractors();
+            farm.GetTotalAcreage();
         }
     }
 }
