@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FarmManagementSystem.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace FarmManagementSystem.Models
@@ -7,9 +8,8 @@ namespace FarmManagementSystem.Models
     {
         private readonly List<Field> _fields = new List<Field>();
 
-        private readonly List<Tractor> _tractors = new List<Tractor>();
-
-        public IReadOnlyList<Tractor> Tractors => _tractors;
+        private readonly List<IWorkable> _machines = new List<IWorkable>();
+        public IReadOnlyList<IWorkable> Machines => _machines;
         public IReadOnlyList<Field> Fields => _fields;
 
         private string _name;
@@ -34,40 +34,12 @@ namespace FarmManagementSystem.Models
            
         }
 
-        public void AddTractor(Tractor tractor)
-        {
-            if(tractor == null)
-            {
-                throw new ArgumentNullException(nameof(tractor), "Tractor cannot be null");
-            }
-            _tractors.Add(tractor);
-        }
-
-        public void ShowTractors()
-        {
-            foreach (Tractor tractor in _tractors)
-            {
-                Console.WriteLine($"{tractor.Model} - {tractor.HorsePower} HP");
-            }
-        }
-
-        public int GetTotalHorsePower()
-        {
-            int totalHorsePower = 0;
-
-            foreach(Tractor tractor in _tractors)
-            {
-                totalHorsePower += tractor.HorsePower;
-            }
-            
-            return totalHorsePower;
-        }
 
         public void AddField(Field field)
         {
             if(field == null)
             {
-                return;
+                throw new ArgumentNullException(nameof(field), "Field cannot be null");
             }
 
             _fields.Add(field);
@@ -95,5 +67,28 @@ namespace FarmManagementSystem.Models
             return sumAcres;
         }
 
+
+        public void AddMachine(IWorkable machine)
+        {
+            if (machine == null)
+            {
+                throw new ArgumentNullException(nameof(machine), "Machine cannot be null");
+
+            }
+            _machines.Add(machine);
+
+        }
+
+        public void ShowMachines()
+        {
+            
+            foreach(IWorkable machine in _machines)
+            {
+
+                machine.Work();
+            }
+        }
+
+      
     }
 }
