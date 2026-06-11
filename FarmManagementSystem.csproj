@@ -48,6 +48,7 @@
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\Harvester.cs" />
     <Compile Include="Models\Tractor.cs" />
+    <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

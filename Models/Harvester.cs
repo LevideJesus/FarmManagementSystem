@@ -4,7 +4,7 @@ using FarmManagementSystem.Interfaces;
 
 namespace FarmManagementSystem.Models
 {
-    internal class Harvester : IWorkable
+    internal class Harvester : Vehicle, IWorkable
     {
         private string _model;
         private int _capacity;
@@ -22,22 +22,12 @@ namespace FarmManagementSystem.Models
                 _capacity = value;
             }
         }
-        public string Model
-        {
-            get { return _model; }
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Model cannot be empty"); 
-                }
-                _model = value;
-            }
-        }
+     
 
         public Harvester(string model, int capacity)
+            : base(model)
         {
-            Model = model;
+           
             Capacity = capacity;
         }
 

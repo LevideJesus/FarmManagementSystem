@@ -3,9 +3,8 @@ using FarmManagementSystem.Interfaces;
 
 namespace FarmManagementSystem.Models
 {
-    internal class Tractor : IWorkable
+    internal class Tractor : Vehicle, IWorkable
     {
-        private string _model;
 
 
         private int _horsePower;
@@ -17,28 +16,18 @@ namespace FarmManagementSystem.Models
             {
                 if(value <= 0)
                 {
-                    throw new ArgumentException("The HorsePower must be greater than 0.");
+                    throw new ArgumentOutOfRangeException(
+                         nameof(value),
+                         "HorsePower must be greater than 0.");
                 }
                 _horsePower = value;
             }
         }
 
-        public string Model
+ 
+        public Tractor(string model,int horsePower) 
+            :base(model)
         {
-            get { return _model; }
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Model cannot be empty.");
-
-                }
-                _model = value;
-            }
-        }
-        public Tractor(string model, int horsePower)
-        {
-            Model = model;
             HorsePower = horsePower;
         }
 

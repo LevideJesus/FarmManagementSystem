@@ -6,11 +6,15 @@ namespace FarmManagementSystem.Models
 {
     internal class Farm
     {
+        private List<Vehicle> _vehicles = new List<Vehicle>();
+        public IReadOnlyList<Vehicle> Vehicles => _vehicles;
+
         private readonly List<Field> _fields = new List<Field>();
+        public IReadOnlyList<Field> Fields => _fields;
 
         private readonly List<IWorkable> _machines = new List<IWorkable>();
         public IReadOnlyList<IWorkable> Machines => _machines;
-        public IReadOnlyList<Field> Fields => _fields;
+        
 
         private string _name;
 
@@ -89,6 +93,24 @@ namespace FarmManagementSystem.Models
             }
         }
 
+        public void AddVehicles(Vehicle vehicle)
+        {
+            if (vehicle == null)
+            {
+                throw new ArgumentNullException(nameof(vehicle), "Vehicle cannot be null");
+            }
+
+            _vehicles.Add(vehicle);
+        }
+
+
+        public void ShowVehicles()
+        {
+            foreach(Vehicle vehicle in _vehicles)
+            {
+                vehicle.ShowVehicleInfo();
+            }
+        }
       
     }
 }
