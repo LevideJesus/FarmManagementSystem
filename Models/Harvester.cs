@@ -6,7 +6,7 @@ namespace FarmManagementSystem.Models
 {
     internal class Harvester : Vehicle, IWorkable
     {
-        private string _model;
+       
         private int _capacity;
 
         public int Capacity
@@ -34,6 +34,12 @@ namespace FarmManagementSystem.Models
         public void Work()
         {
             Console.WriteLine($"{Model} is harvesting crops.");
+        }
+
+        public override void ShowVehicleInfo()
+        {
+            base.ShowVehicleInfo();
+            Console.WriteLine($"Capacity: {Capacity}");
         }
     }
 }

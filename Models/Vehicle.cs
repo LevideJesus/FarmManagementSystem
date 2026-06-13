@@ -1,9 +1,6 @@
 ﻿using FarmManagementSystem.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace FarmManagementSystem.Models
 {
@@ -30,10 +27,12 @@ namespace FarmManagementSystem.Models
             Model = model;
         }
 
-        public void ShowVehicleInfo()
+        public  virtual void ShowVehicleInfo()
         {
             Console.WriteLine($"Model: {Model}");
         }
+
+        
 
         
     }

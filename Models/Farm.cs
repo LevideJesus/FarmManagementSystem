@@ -93,7 +93,7 @@ namespace FarmManagementSystem.Models
             }
         }
 
-        public void AddVehicles(Vehicle vehicle)
+        public void AddVehicle(Vehicle vehicle)
         {
             if (vehicle == null)
             {
