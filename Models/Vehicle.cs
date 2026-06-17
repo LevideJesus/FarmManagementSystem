@@ -4,7 +4,7 @@ using System;
 
 namespace FarmManagementSystem.Models
 {
-    internal class Vehicle 
+    internal abstract class Vehicle 
     {
 
         private string _model;
@@ -32,8 +32,8 @@ namespace FarmManagementSystem.Models
             Console.WriteLine($"Model: {Model}");
         }
 
-        
+        public abstract void StartWork();
 
-        
+
     }
 }

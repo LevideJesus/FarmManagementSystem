@@ -38,10 +38,16 @@ namespace FarmManagementSystem.Models
 
         public override void ShowVehicleInfo()
         {
-            Console.WriteLine($"Model: {Model}");
+            base.ShowVehicleInfo();
             Console.WriteLine($"HorsePower: {HorsePower}");
         }
+
+        public override void StartWork()
+        {
+            Console.WriteLine($"{Model} starts plowing.");
+        }
+
     }
 
-   
+
 }

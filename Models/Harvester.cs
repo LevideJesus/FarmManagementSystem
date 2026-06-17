@@ -41,5 +41,9 @@ namespace FarmManagementSystem.Models
             base.ShowVehicleInfo();
             Console.WriteLine($"Capacity: {Capacity}");
         }
+        public override void StartWork()
+        {
+            Console.WriteLine($"{Model} starts harvesting.");
+        }
     }
 }
